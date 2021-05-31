@@ -1,0 +1,371 @@
+@charset "utf-8";
+$layout-width-inner:1000px;
+//マップ型変数breakpointsを定義
+$breakpoints: ( 'sp': '(max-width: 767px)', 'pc': '(min-width: #{$layout-width-inner}))') !default;
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+// ------------------
+// 共通
+// ------------------
+$color-main:#E03131;
+$color-text:#383E45;
+body {
+    font-family: 'Helvetica Neue', 'Arial', "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    font-size: 14.4px;
+    line-height: (21 / 14);
+    background: #fff;
+    color: $color-text;
+}
+
+.inner {
+    width: $layout-width-inner;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+a:hover {
+    color: inherit;
+}
+
+.head {
+    height: 300px;
+    text-align: center;
+    position: relative;
+    display: block;
+    @include mq('sp') {
+        height: 94px;
+    }
+    h2 {
+        color: #fff;
+        font-size: 72px;
+        font-weight: 700;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include mq('sp') {
+            font-size: 32px;
+        }
+    }
+}
+
+.menu-head {
+    background: url(../img/brioche-5351807_1920.jpg) no-repeat center center / cover;
+    @include mq('pc') {
+        background-attachment: fixed;
+    }
+}
+
+.about-head {
+    background: url(../img/nathan-dumlao-XOhI_kW_TaM-unsplash.jpg) no-repeat center center / cover;
+    @include mq('pc') {
+        background-attachment: fixed;
+    }
+}
+
+.location-head {
+    background: url(../img/priscilla-du-preez-jxc2V0ayIfk-unsplash.jpg) no-repeat center center / cover;
+    @include mq('pc') {
+        background-attachment: fixed;
+    }
+}
+
+.title {
+    text-align: center;
+    h3 {
+        display: inline-block;
+        font-size: 40px;
+        line-height: (45 / 40);
+        font-weight: 700;
+        padding-bottom: 17px;
+        border-bottom: $color-main 6px solid;
+        @include mq('sp') {
+            font-size: 20px;
+            padding-bottom: 5px;
+        }
+    }
+}
+
+@include mq('sp') {
+    .sp-none {
+        display: none;
+    }
+}
+
+@include mq('pc') {
+    .pc-none {
+        display: none;
+    }
+}
+
+// ------------------
+// main
+// ------------------
+.main {
+    height: 100vh;
+    background: url(../img/coffee-918926_1920.jpg)no-repeat center center/ cover;
+    color: #fff;
+    padding-top: 16px;
+}
+
+.main-nav {
+    margin-right: 39px;
+    ul {
+        display: flex;
+        justify-content: flex-end;
+        li {
+            margin-left: 24px;
+            a {
+                font-weight: 700;
+                text-shadow: 1px 1px 2px #121212;
+                transition: color .3s;
+                &:hover {
+                    color: $color-main;
+                }
+            }
+        }
+    }
+}
+
+.main-title {
+    h1 {
+        font-size: 115px;
+        font-weight: 700;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        @include mq('sp') {
+            font-size: 84px;
+        }
+    }
+}
+
+// ------------------
+// menu
+// ------------------
+#menu {
+    margin-top: 20px;
+}
+
+.menu-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 90px 0 145px;
+    @include mq('sp') {
+        display: block;
+        padding: 33px 0 109px;
+    }
+}
+
+.table {
+    margin-top: 45px;
+    tr {
+        th {
+            width: calc(100% - 52px);
+            border-bottom: $color-text 1px dotted;
+            padding-bottom: 2.5px;
+            padding-top: 25px;
+        }
+        td {
+            margin-left: 16px;
+            padding-bottom: 0;
+            width: 52px;
+            vertical-align: middle;
+        }
+        &:not(:first-child) {
+            padding-top: 25px;
+        }
+    }
+    @include mq('sp') {
+        margin-top: 0;
+        tr {
+            th {
+                width: 100%;
+                padding-bottom: 0;
+                padding-top: 25px;
+            }
+            td {
+                margin-left: 8.6px;
+                vertical-align: bottom;
+            }
+            &:not(:first-child) {
+                padding-top: 25px;
+            }
+        }
+    }
+}
+
+.menu-right {
+    padding: 6px 45px 45px;
+    width: 100%;
+    @include mq('sp') {
+        padding: 0;
+        margin-top: 38px;
+    }
+}
+
+.menu-left {
+    padding: 6px 45px 45px;
+    border-right: $color-text 1px solid;
+    width: 100%;
+    @include mq('sp') {
+        border: none;
+        padding: 0;
+    }
+}
+
+.title-other {
+    margin-top: 69px;
+    @include mq('sp') {
+        margin-top: 38px;
+    }
+}
+
+// ------------------
+// about
+// ------------------
+#about {}
+
+.about-content {
+    padding: 83px 0 150px;
+    @include mq('sp') {
+        padding: 33px 0 80px;
+    }
+}
+
+.about-items {
+    padding: 87px 27px 0;
+    display: flex;
+    flex-wrap: wrap;
+    @include mq('sp') {
+        display: block;
+        padding: 20px 0 0;
+    }
+}
+
+.about-item {
+    width: calc((100% - 54px) / 2);
+    &:nth-child(2n) {
+        margin-left: 54px;
+    }
+    &:nth-child(n + 3) {
+        margin-top: 40px;
+    }
+    @include mq('sp') {
+        margin-top: 14px;
+        width: 100%;
+        &:nth-child(2n) {
+            margin-left: 0;
+        }
+        &:nth-child(n + 3) {
+            margin-top: 14px;
+        }
+    }
+}
+
+.about-more {
+    margin-top: 51px;
+    text-align: center;
+    @include mq('sp') {
+        margin-top: 40px;
+    }
+    a {
+        display: inline-block;
+        width: 160px;
+        padding: 14px;
+        position: relative;
+        &::before,
+        &::after {
+            transition: all .3s;
+            content: '';
+            width: 32px;
+            height: 32px;
+            position: absolute;
+        }
+        &::before {
+            border-left: solid 1px $color-main;
+            border-top: solid 1px $color-main;
+            top: 0;
+            left: 0;
+        }
+        &::after {
+            border-right: solid 1px $color-main;
+            border-bottom: solid 1px $color-main;
+            bottom: 0;
+            right: 0;
+        }
+        &:hover {
+            &::before,
+            &::after {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+// ------------------
+// location
+// ------------------
+#location {}
+
+.location-content {
+    padding: 83px 0 190px;
+    @include mq('sp') {
+        padding: 33px 0 148px;
+    }
+}
+
+.location-map {
+    margin-top: 73px;
+    position: relative;
+    width: 100%;
+    padding-top: 41%;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        filter: grayscale(100%);
+    }
+    @include mq('sp') {
+        margin-top: 25px;
+        height: 407px;
+    }
+}
+
+.location-info {
+    line-height: (24.4 / 14.4);
+}
+
+.location-address {
+    margin-top: 22px;
+}
+
+.location-time {
+    margin-top: 14px;
+}
+
+.location-tel {
+    margin-top: 15px;
+}
+
+// ------------------
+// footer
+// ------------------
+footer {
+    text-align: center;
+    padding-bottom: 10px;
+    p {
+        font-size: 10px;
+    }
+}
